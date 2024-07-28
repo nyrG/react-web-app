@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Components.css";
 import { fetchAllOrders } from "./Service/ApiService"; // Adjust the import path as needed
 
 function DisplayOrders() {
   const [orders, setOrders] = useState([]);
+  const navigate = useNavigate(); // Use navigate for routing
 
   const getData = async () => {
     try {
@@ -41,10 +43,8 @@ function DisplayOrders() {
             {orders.map((order, index) => (
               <tr key={index}>
                 <td>{order.stationName || "N/A"}</td>
-                <td>{order.quantity ?? "N/A"}</td>{" "}
-                {/* Using ?? to handle null or undefined */}
-                <td>{order.price ?? "N/A"}</td>{" "}
-                {/* Using ?? to handle null or undefined */}
+                <td>{order.quantity ?? "N/A"}</td>
+                <td>{order.price ?? "N/A"}</td>
                 <td>{order.orderDate || "N/A"}</td>
                 <td>{order.deliveryDate || "N/A"}</td>
                 <td>{order.status || "N/A"}</td>
@@ -62,9 +62,9 @@ function DisplayOrders() {
           </tbody>
         </table>
       </div>
-      {/* <div className="submit" onClick={getData}>
+      <div className="submit" onClick={() => navigate("/add-order")}>
         Add Order
-      </div> */}
+      </div>
     </div>
   );
 }

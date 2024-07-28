@@ -6,6 +6,7 @@ import Login from "./components/Accounts/Login";
 import SignUp from "./components/Accounts/SignUp";
 import Order from "./components/Order";
 import Navbar from "./components/Navbar";
+import AddOrder from "./components/AddOrder";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/order" element={<Order />} />
+          <Route path="/add-order" element={<AddOrder />} />
           <Route path="*" element={<Login />} />{" "}
           {/* Redirect to Login as default */}
         </Routes>
