@@ -32,12 +32,32 @@ export const fetchAllAccounts = async () => {
   }
 };
 
+export const fetchAccountByEmail = async (email) => {
+  try {
+    const response = await axios.get(`${API_URL}/findUser/${email}`);
+    return response.data;
+  } catch (error) {
+    console.error(`Error fetching user with email ${email}`, error);
+    throw error;
+  }
+};
+
 export const deleteAccount = async (email) => {
   try {
     const response = await axios.delete(`${API_URL}/deleteUser/${email}`);
     return response.data;
   } catch (error) {
     console.error('Error Deleting account', error);
+    throw error;
+  }
+};
+
+export const fetchAllOrders = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/findOrders`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching inventory", error);
     throw error;
   }
 };

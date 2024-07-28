@@ -16,6 +16,11 @@ function Navbar() {
             Sign Up
           </Link>
         </li>
+        <li className="navbar-item">
+          <Link to="/order" className="navbar-link">
+            Orders
+          </Link>
+        </li>
       </ul>
     </nav>
   );

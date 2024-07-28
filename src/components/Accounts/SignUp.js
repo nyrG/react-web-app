@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Accounts.css";
+import "../Components.css";
 import { createAccount } from "../Service/ApiService";
 
 function SignUp() {

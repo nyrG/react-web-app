@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./Accounts.css";
+import "../Components.css"
 import { loginAccount } from "../Service/ApiService";
 
 function Login() {
