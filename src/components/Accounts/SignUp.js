@@ -21,15 +21,16 @@ function SignUp() {
     },
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false); // New state
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    // Simplify update logic with dynamic key paths
     setFormData((prevFormData) => {
       const newFormData = { ...prevFormData };
       if (name.includes(".")) {
-        const keys = name.split(".");
-        newFormData[keys[0]] = { ...newFormData[keys[0]], [keys[1]]: value };
+        const [key, subKey] = name.split(".");
+        newFormData[key] = { ...newFormData[key], [subKey]: value };
       } else {
         newFormData[name] = value;
       }
@@ -39,20 +40,20 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (isSubmitting) return; // Prevent duplicate submissions
+
+    setIsSubmitting(true);
     console.log("Submitting form with data:", formData);
+
     try {
-      const response = await createAccount(formData);
+      await createAccount(formData);
       alert("Account successfully created");
+      // Reset form or redirect user here if needed
     } catch (error) {
-      if (
-        error.response &&
-        error.response.data &&
-        error.response.data.Message
-      ) {
-        alert(`Account creation failed: ${error.response.data.Message}`);
-      } else {
-        alert(`Account creation failed: ${error.message}`);
-      }
+      const errorMessage = error.response?.data?.Message || error.message;
+      alert(`Account creation failed: ${errorMessage}`);
+    } finally {
+      setIsSubmitting(false); // Re-enable the submit button
     }
   };
 
@@ -62,7 +63,7 @@ function SignUp() {
         <div className="text">Sign Up</div>
         <div className="underline"></div>
       </div>
-      <form className="inputs" onSubmit={handleSubmit}>
+      <form className="inputs">
         {/* Account Information Section */}
         <div className="section">
           <h3>Account Information</h3>
@@ -175,11 +176,14 @@ function SignUp() {
         </div>
 
         {/* Submit Button */}
-        <div className="submit">
-          <button type="submit" className="submit">
-            Sign Up
-          </button>
-        </div>
+        <button
+          type="submit"
+          className="submit"
+          onClick={handleSubmit}
+          disabled={isSubmitting}
+        >
+          {isSubmitting ? "Submitting..." : "Sign Up"}
+        </button>
       </form>
     </div>
   );

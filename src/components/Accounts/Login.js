@@ -52,9 +52,9 @@ function Login() {
             required
           />
         </div>
-        <div className="submit" onClick={handleLogin}>
+        <button className="submit" onClick={handleLogin}>
           Login
-        </div>
+        </button>
       </div>
     </div>
   );
