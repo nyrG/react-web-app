@@ -1,0 +1,84 @@
+/* Shared container styles */
+.container,
+.login-container,
+.signup-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Header styles */
+.header {
+    margin-bottom: 20px;
+}
+
+.text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.underline {
+    height: 2px;
+    width: 50px;
+    background-color: #333;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+
+/* Section titles */
+.section h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Input fields */
+.inputs {
+    margin-bottom: 20px;
+    margin: 0 auto;
+}
+
+.input {
+    margin: 0 auto;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input input,
+.input select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Submit button */
+.submit {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .inputs {
+    width: 90%;
+  }
+}
